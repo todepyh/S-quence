@@ -3,156 +3,184 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Séquence</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --bg:#0a0a0a;--surface:#111111;--surface2:#1a1a1a;--surface3:#222;
-    --text:#f0ede6;--muted:#888;--accent:#e8c87a;--border:#2a2a2a;
-    --danger:#e24b4a;--success:#1D9E75;
-  }
-  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
-  .grain{position:fixed;inset:0;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");z-index:999}
-  nav{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2.5rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);z-index:100}
-  .logo{font-family:'Playfair Display',serif;font-size:1.4rem;letter-spacing:.05em;color:var(--accent)}
-  .logo span{font-style:italic;color:var(--text)}
-  .nav-tabs{display:flex;gap:.25rem}
-  .tab{background:none;border:none;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:400;padding:.45rem 1rem;border-radius:20px;cursor:pointer;letter-spacing:.04em;transition:all .2s}
-  .tab:hover{color:var(--text);background:var(--surface2)}
-  .tab.active{color:var(--bg);background:var(--text)}
-  .page{display:none;padding:2.5rem;max-width:900px;margin:0 auto;min-height:80vh}
-  .page.active{display:block}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#faf8f4;--bg2:#f4f0e8;--bg3:#ede8de;
+  --surface:#ffffff;--surface2:#f7f4ef;
+  --text:#2d2926;--muted:#8c8680;--faint:#bbb6ae;
+  --accent:#7a6a52;--accent2:#c4a882;--gold:#b8966e;
+  --border:#e2ddd6;--border2:#d4cec5;
+  --rose:#e8d5cf;--sage:#c8d5c4;--sky:#c8d4e0;--lavender:#d4cee8;
+  --rose-dark:#a07068;--sage-dark:#5a7860;--sky-dark:#4a6878;--lav-dark:#6a6090;
+}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;min-height:100vh;font-weight:300}
 
-  /* Home */
-  .hero{text-align:center;padding:4rem 0 3rem}
-  .hero h1{font-family:'Playfair Display',serif;font-size:3rem;font-weight:400;line-height:1.15;margin-bottom:1rem}
-  .hero h1 em{font-style:italic;color:var(--accent)}
-  .hero p{color:var(--muted);font-size:.95rem;font-weight:300;max-width:460px;margin:0 auto 2.5rem}
-  .input-group{display:flex;gap:.75rem;max-width:520px;margin:0 auto 1rem}
-  .input-group input{flex:1;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;padding:.75rem 1.1rem;border-radius:8px;outline:none;transition:border .2s}
-  .input-group input::placeholder{color:#555}
-  .input-group input:focus{border-color:#444}
-  .btn-primary{background:var(--accent);color:#0a0a0a;border:none;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;padding:.75rem 1.4rem;border-radius:8px;cursor:pointer;white-space:nowrap;letter-spacing:.03em;transition:opacity .2s}
-  .btn-primary:hover{opacity:.85}
-  .btn-primary:disabled{opacity:.4;cursor:not-allowed}
-  .hint{font-size:.78rem;color:#555;text-align:center;margin-bottom:.5rem}
-  .divider{display:flex;align-items:center;gap:1rem;max-width:520px;margin:.75rem auto 1rem;color:#444;font-size:.78rem}
-  .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
-  .genre-chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;max-width:560px;margin:0 auto 2rem}
-  .chip{background:var(--surface);border:1px solid var(--border);color:var(--muted);font-size:.78rem;padding:.35rem .85rem;border-radius:20px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
-  .chip:hover,.chip.sel{background:var(--surface2);color:var(--text);border-color:#444}
-  .chip.sel{border-color:var(--accent);color:var(--accent)}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;border-bottom:1px solid var(--border);background:rgba(250,248,244,.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:.08em;color:var(--accent)}
+.logo em{font-style:italic;color:var(--gold)}
+.nav-tabs{display:flex;gap:.2rem;background:var(--bg2);border:1px solid var(--border);border-radius:24px;padding:.25rem}
+.tab{background:none;border:none;color:var(--muted);font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:400;padding:.4rem 1.1rem;border-radius:20px;cursor:pointer;letter-spacing:.03em;transition:all .2s}
+.tab:hover{color:var(--text)}
+.tab.active{background:var(--surface);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.08)}
 
-  /* Results */
-  .section-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
-  .section-title::after{content:'';flex:1;height:1px;background:var(--border)}
-  .films-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2.5rem}
-  .film-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.1rem;cursor:pointer;transition:all .25s;position:relative}
-  .film-card:hover{border-color:#444;background:var(--surface2);transform:translateY(-2px)}
-  .film-year{font-size:.72rem;color:var(--muted);margin-bottom:.35rem;letter-spacing:.05em}
-  .film-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:400;line-height:1.25;margin-bottom:.4rem}
-  .film-dir{font-size:.75rem;color:var(--muted);margin-bottom:.6rem}
-  .film-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.7rem}
-  .film-tag{font-size:.68rem;background:var(--surface2);border:1px solid var(--border);color:#888;padding:.18rem .55rem;border-radius:10px}
-  .film-why{font-size:.76rem;color:var(--muted);line-height:1.5;font-style:italic}
-  .film-rating{position:absolute;top:.8rem;right:.8rem;font-size:.72rem;color:var(--accent);font-weight:500}
-  .loader{text-align:center;padding:4rem 0;color:var(--muted);font-size:.9rem}
-  .loader-dot{display:inline-block;width:6px;height:6px;background:var(--accent);border-radius:50%;margin:0 3px;animation:pulse 1.2s ease-in-out infinite}
-  .loader-dot:nth-child(2){animation-delay:.2s}
-  .loader-dot:nth-child(3){animation-delay:.4s}
-  @keyframes pulse{0%,80%,100%{opacity:.2;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+.page{display:none;padding:2.5rem;max-width:880px;margin:0 auto;min-height:80vh}
+.page.active{display:block}
 
-  /* Profile */
-  .profile-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
-  .profile-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:400;margin-bottom:.3rem}
-  .profile-meta{font-size:.82rem;color:var(--muted)}
-  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:2rem}
-  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center}
-  .stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--accent)}
-  .stat-label{font-size:.72rem;color:var(--muted);margin-top:.2rem;letter-spacing:.04em}
-  .rated-list{display:flex;flex-direction:column;gap:.75rem}
-  .rated-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.9rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-  .rated-title{font-family:'Playfair Display',serif;font-size:.95rem;flex:1}
-  .rated-dir{font-size:.75rem;color:var(--muted);flex:1}
-  .stars{display:flex;gap:3px}
-  .star{font-size:1rem;cursor:pointer;color:#333;transition:color .15s;line-height:1}
-  .star.lit{color:var(--accent)}
-  .empty-state{text-align:center;padding:3rem;color:var(--muted);font-size:.9rem}
-  .empty-state p{margin-top:.5rem;font-size:.8rem;color:#444}
+.hero{text-align:center;padding:3.5rem 0 2.5rem}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;line-height:1.15;margin-bottom:.8rem;color:var(--text)}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{color:var(--muted);font-size:.92rem;font-weight:300;max-width:420px;margin:0 auto 2.5rem;line-height:1.7}
 
-  /* Toast */
-  .toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--surface2);border:1px solid var(--border);color:var(--text);font-size:.82rem;padding:.7rem 1.1rem;border-radius:8px;opacity:0;transform:translateY(8px);transition:all .3s;z-index:1000;pointer-events:none}
-  .toast.show{opacity:1;transform:translateY(0)}
+.search-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;max-width:520px;margin:0 auto 1.5rem;box-shadow:0 2px 16px rgba(0,0,0,.04)}
+.search-label{font-size:.72rem;font-weight:500;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem}
+.input-row{display:flex;gap:.6rem}
+.input-row input{flex:1;background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:300;padding:.7rem 1rem;border-radius:10px;outline:none;transition:border .2s}
+.input-row input::placeholder{color:var(--faint)}
+.input-row input:focus{border-color:var(--accent2);background:var(--surface)}
+.btn{background:var(--accent);color:#faf8f4;border:none;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:400;padding:.7rem 1.3rem;border-radius:10px;cursor:pointer;letter-spacing:.03em;transition:all .2s;white-space:nowrap}
+.btn:hover{background:var(--gold)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-ghost{background:transparent;color:var(--accent);border:1px solid var(--border2);font-family:'Outfit',sans-serif;font-size:.82rem;padding:.6rem 1.3rem;border-radius:10px;cursor:pointer;transition:all .2s}
+.btn-ghost:hover{border-color:var(--accent2);background:var(--bg2)}
 
-  .letterboxd-films{margin:1.5rem 0}
-  .lbx-chip{display:inline-flex;align-items:center;gap:.4rem;background:var(--surface2);border:1px solid var(--border);font-size:.75rem;color:var(--muted);padding:.3rem .7rem;border-radius:12px;margin:.25rem}
-  .status-bar{font-size:.8rem;color:var(--muted);margin-bottom:1rem;padding:.6rem .9rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;display:none}
-  .status-bar.show{display:block}
+.status-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:.35rem .9rem;margin:.75rem 0;display:none}
+.status-pill.show{display:inline-flex}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--accent2);animation:blink 1.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.3}50%{opacity:1}}
+.status-pill.ok .status-dot{background:var(--sage-dark);animation:none}
+.status-pill.err .status-dot{background:#c07070;animation:none}
+
+.divider{display:flex;align-items:center;gap:.75rem;max-width:520px;margin:.5rem auto 1rem;color:var(--faint);font-size:.75rem}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.genre-chips{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;max-width:540px;margin:0 auto 1.8rem}
+.chip{background:var(--surface);border:1px solid var(--border);color:var(--muted);font-size:.78rem;font-weight:400;padding:.35rem .9rem;border-radius:20px;cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--accent2);color:var(--text)}
+.chip.sel{background:var(--accent);color:#faf8f4;border-color:var(--accent)}
+
+.lbx-films{max-width:520px;margin:.5rem auto .75rem;text-align:center}
+.lbx-tag{display:inline-flex;align-items:center;gap:.3rem;background:var(--rose);color:var(--rose-dark);font-size:.72rem;padding:.25rem .65rem;border-radius:12px;margin:.2rem;border:1px solid #e0c8c4}
+
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;margin-bottom:1.25rem;color:var(--text);display:flex;align-items:center;gap:.75rem;letter-spacing:.02em}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.films-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:.85rem;margin-bottom:2rem}
+.film-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem;cursor:pointer;transition:all .22s;position:relative;overflow:hidden}
+.film-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0}
+.film-card.genre-drame::before{background:var(--rose)}
+.film-card.genre-sf::before{background:var(--sky)}
+.film-card.genre-thriller::before{background:var(--lavender)}
+.film-card.genre-default::before{background:var(--sage)}
+.film-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.07);border-color:var(--border2)}
+.film-score{position:absolute;top:.75rem;right:.75rem;font-size:.68rem;color:var(--gold);font-weight:500;background:var(--bg2);border:1px solid var(--border);padding:.18rem .5rem;border-radius:8px}
+.film-year{font-size:.7rem;color:var(--faint);margin-bottom:.3rem;letter-spacing:.04em;margin-top:.1rem}
+.film-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;line-height:1.25;margin-bottom:.3rem;padding-right:2rem}
+.film-dir{font-size:.73rem;color:var(--muted);margin-bottom:.55rem}
+.film-tags{display:flex;flex-wrap:wrap;gap:.25rem;margin-bottom:.6rem}
+.film-tag{font-size:.65rem;background:var(--bg2);border:1px solid var(--border);color:var(--muted);padding:.15rem .5rem;border-radius:8px}
+.film-why{font-size:.74rem;color:var(--muted);line-height:1.5;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:.88rem}
+.film-rate-btn{display:block;width:100%;margin-top:.75rem;background:var(--bg);border:1px solid var(--border);color:var(--muted);font-family:'Outfit',sans-serif;font-size:.72rem;padding:.4rem;border-radius:8px;cursor:pointer;transition:all .2s;text-align:center}
+.film-rate-btn:hover{background:var(--accent);color:#faf8f4;border-color:var(--accent)}
+
+.loader{text-align:center;padding:4rem 0;color:var(--muted);font-size:.88rem}
+.dots{display:flex;gap:6px;justify-content:center;margin-top:1rem}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent2);animation:pulse .9s ease-in-out infinite}
+.dot:nth-child(2){animation-delay:.15s}
+.dot:nth-child(3){animation-delay:.3s}
+@keyframes pulse{0%,80%,100%{opacity:.2;transform:scale(.75)}40%{opacity:1;transform:scale(1)}}
+
+.profile-top{display:flex;align-items:center;gap:1.25rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--lavender));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--accent);border:1px solid var(--border2)}
+.profile-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300}
+.profile-sub{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:2rem}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.9rem 1rem;text-align:center}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--gold)}
+.stat-l{font-size:.7rem;color:var(--muted);letter-spacing:.05em;margin-top:.1rem}
+
+.rated-list{display:flex;flex-direction:column;gap:.6rem}
+.rated-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;display:flex;align-items:center;gap:.75rem}
+.rated-title{font-family:'Cormorant Garamond',serif;font-size:.98rem;flex:1;font-weight:400}
+.rated-dir{font-size:.73rem;color:var(--muted);min-width:80px}
+.stars{display:flex;gap:2px;flex-shrink:0}
+.star{font-size:1rem;cursor:pointer;color:var(--border2);transition:color .12s;line-height:1;user-select:none}
+.star.lit{color:var(--gold)}
+.empty-state{text-align:center;padding:3rem;color:var(--muted);font-size:.88rem;line-height:1.8}
+
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(8px);background:var(--text);color:var(--bg);font-size:.8rem;font-weight:400;padding:.65rem 1.2rem;border-radius:20px;opacity:0;transition:all .3s;z-index:1000;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
-<div class="grain"></div>
+
 <nav>
-  <div class="logo">Séquence<span>.</span></div>
+  <div class="logo">Sé<em>quence</em></div>
   <div class="nav-tabs">
-    <button class="tab active" onclick="showPage('home')">Découvrir</button>
-    <button class="tab" onclick="showPage('profile')">Mon profil</button>
+    <button class="tab active" id="tab-home" onclick="switchTab('home')">Découvrir</button>
+    <button class="tab" id="tab-profile" onclick="switchTab('profile')">Mon profil</button>
   </div>
 </nav>
 
 <div id="page-home" class="page active">
   <div class="hero">
-    <h1>Des films qui <em>méritent</em><br>d'être vus.</h1>
-    <p>Colle ton profil Letterboxd ou choisis tes genres — on s'occupe du reste.</p>
-    <div class="input-group">
-      <input type="text" id="lbx-input" placeholder="letterboxd.com/tonpseudo" />
-      <button class="btn-primary" id="lbx-btn" onclick="fetchLetterboxd()">Analyser</button>
+    <h1>Des films qui <em>méritent</em><br>d'être vus</h1>
+    <p>Colle ton profil Letterboxd ou sélectionne des genres — et laisse-toi guider.</p>
+
+    <div class="search-card">
+      <div class="search-label">Profil Letterboxd</div>
+      <div class="input-row">
+        <input type="text" id="lbx-input" placeholder="letterboxd.com/tonpseudo ou juste tonpseudo" />
+        <button class="btn" id="lbx-btn" onclick="fetchLetterboxd()">Analyser</button>
+      </div>
     </div>
-    <div class="hint" id="lbx-status-hint"></div>
-    <div class="status-bar" id="status-bar"></div>
-    <div id="lbx-seen-list" class="letterboxd-films"></div>
+
+    <div id="status-pill" class="status-pill">
+      <span class="status-dot"></span>
+      <span id="status-text">Chargement...</span>
+    </div>
+
+    <div id="lbx-seen" class="lbx-films"></div>
+
     <div class="divider">ou choisis des genres</div>
     <div class="genre-chips" id="genre-chips"></div>
-    <button class="btn-primary" id="reco-btn" onclick="getRecommendations()" style="padding:.75rem 2.2rem">
+    <button class="btn" id="reco-btn" onclick="getRecommendations()" style="padding:.75rem 2rem">
       Recommande-moi des films
     </button>
   </div>
+
   <div id="results-area"></div>
 </div>
 
 <div id="page-profile" class="page">
-  <div class="profile-header">
+  <div class="profile-top">
+    <div class="avatar" id="avatar-initials">C</div>
     <div>
       <div class="profile-name" id="profile-name">Mon cinéma</div>
-      <div class="profile-meta" id="profile-meta">Commence à noter des films pour affiner tes recommandations</div>
+      <div class="profile-sub" id="profile-sub">Note les films pour affiner tes recommandations</div>
     </div>
   </div>
   <div class="stats-row">
-    <div class="stat-card"><div class="stat-num" id="stat-rated">0</div><div class="stat-label">notés</div></div>
-    <div class="stat-card"><div class="stat-num" id="stat-avg">—</div><div class="stat-label">note moyenne</div></div>
-    <div class="stat-card"><div class="stat-num" id="stat-genres">—</div><div class="stat-label">genre favori</div></div>
+    <div class="stat"><div class="stat-n" id="s-rated">0</div><div class="stat-l">films notés</div></div>
+    <div class="stat"><div class="stat-n" id="s-avg">—</div><div class="stat-l">note moyenne</div></div>
+    <div class="stat"><div class="stat-n" id="s-genre">—</div><div class="stat-l">genre favori</div></div>
   </div>
-  <div class="section-title">Films notés</div>
+  <div class="section-title">Films à noter</div>
   <div id="rated-list" class="rated-list">
-    <div class="empty-state">Aucun film noté pour l'instant.<p>Les films recommandés apparaîtront ici pour que tu puisses les noter.</p></div>
+    <div class="empty-state">Aucune recommandation pour l'instant.<br>Lance une recherche depuis l'onglet Découvrir.</div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-const GENRES = ['Drame','Thriller','Science-fiction','Horreur','Comédie','Romance','Documentaire','Animation','Policier','Western','Historique','Biopic'];
-const state = {
-  selectedGenres:[],
-  seenFilms:[],
-  lbxUser:null,
-  ratedFilms:{},
-  recommendedFilms:[]
-};
+const GENRES=['Drame','Thriller','Science-fiction','Horreur','Comédie','Romance','Documentaire','Animation','Policier','Western','Historique','Biopic'];
+const GENRE_COLORS={'Drame':'genre-drame','Science-fiction':'genre-sf','Thriller':'genre-thriller'};
+const state={selectedGenres:[],seenFilms:[],lbxUser:null,ratings:{},queue:[],allReco:[]};
 
 function init(){
-  const gc = document.getElementById('genre-chips');
+  const gc=document.getElementById('genre-chips');
   GENRES.forEach(g=>{
     const c=document.createElement('div');
     c.className='chip';c.textContent=g;
@@ -164,18 +192,20 @@ function init(){
   });
 }
 
-function showPage(p){
-  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active'));
-  document.getElementById('page-'+p).classList.add('active');
-  event.target.classList.add('active');
-  if(p==='profile') renderProfile();
+function switchTab(t){
+  ['home','profile'].forEach(p=>{
+    document.getElementById('page-'+p).classList.toggle('active',p===t);
+    document.getElementById('tab-'+p).classList.toggle('active',p===t);
+  });
+  if(t==='profile')renderProfile();
 }
 
-function showStatus(msg,show=true){
-  const s=document.getElementById('status-bar');
-  s.textContent=msg;s.className='status-bar'+(show?' show':'');
+function setStatus(msg,type='loading'){
+  const pill=document.getElementById('status-pill');
+  pill.className='status-pill show '+(type==='ok'?'ok':type==='err'?'err':'');
+  document.getElementById('status-text').textContent=msg;
 }
+function hideStatus(){document.getElementById('status-pill').className='status-pill';}
 
 function toast(msg){
   const t=document.getElementById('toast');
@@ -185,75 +215,101 @@ function toast(msg){
 
 async function fetchLetterboxd(){
   const raw=document.getElementById('lbx-input').value.trim();
-  if(!raw){toast('Entre une URL Letterboxd');return;}
-  const match=raw.match(/letterboxd\.com\/([^/]+)/i)||raw.match(/^([a-z0-9_-]+)$/i);
-  if(!match){toast('URL invalide');return;}
+  if(!raw){toast('Entre un pseudo Letterboxd');return;}
+  const match=raw.match(/letterboxd\.com\/([^/?#]+)/)||raw.match(/^([a-zA-Z0-9_-]+)$/);
+  if(!match){toast('Pseudo ou URL invalide');return;}
   const user=match[1];
   const btn=document.getElementById('lbx-btn');
   btn.disabled=true;btn.textContent='...';
-  showStatus(`Lecture du profil @${user}...`);
-  try{
-    const rssUrl=`https://letterboxd.com/${user}/rss/`;
-    const proxyUrl=`https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
-    const resp=await fetch(proxyUrl);
-    const data=await resp.json();
-    if(!data.contents)throw new Error('no data');
-    const parser=new DOMParser();
-    const xml=parser.parseFromString(data.contents,'text/xml');
-    const items=xml.querySelectorAll('item');
-    const films=[];
-    items.forEach(item=>{
-      const title=item.querySelector('title')?.textContent||'';
-      const clean=title.replace(/,\s*\d{4}$/,'').trim();
-      const yearM=title.match(/,\s*(\d{4})$/);
-      if(clean&&!films.find(f=>f.title===clean))
-        films.push({title:clean,year:yearM?yearM[1]:''});
-    });
-    if(!films.length)throw new Error('empty');
-    state.seenFilms=films.slice(0,30);
-    state.lbxUser=user;
-    showStatus(`@${user} — ${films.length} films récupérés`);
-    renderSeenFilms();
-    document.getElementById('lbx-input').value=`letterboxd.com/${user}`;
-    toast(`${films.length} films chargés !`);
-  }catch(e){
-    showStatus('Impossible de lire ce profil. Vérifie qu\'il est public.');
+  setStatus(`Lecture de @${user}…`);
+
+  const rssUrl=`https://letterboxd.com/${user}/rss/`;
+
+  const proxies=[
+    `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`,
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`,
+    `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(rssUrl)}`
+  ];
+
+  let xml=null;
+  for(const proxy of proxies){
+    try{
+      const r=await fetch(proxy,{signal:AbortSignal.timeout(8000)});
+      if(!r.ok)continue;
+      const txt=await r.text();
+      if(!txt.includes('<rss')&&!txt.includes('<feed'))continue;
+      const parser=new DOMParser();
+      xml=parser.parseFromString(txt,'text/xml');
+      if(xml.querySelector('parsererror'))continue;
+      break;
+    }catch(e){continue;}
   }
+
+  if(!xml){
+    setStatus('Impossible de lire ce profil. Vérifie qu\'il est public ou réessaie.','err');
+    btn.disabled=false;btn.textContent='Analyser';
+    return;
+  }
+
+  const items=xml.querySelectorAll('item');
+  const films=[];
+  items.forEach(item=>{
+    const title=item.querySelector('title')?.textContent||'';
+    const clean=title.replace(/,\s*\d{4}$/,'').trim();
+    const yearM=title.match(/,\s*(\d{4})$/);
+    if(clean&&clean!=='Letterboxd'&&!films.find(f=>f.title===clean))
+      films.push({title:clean,year:yearM?yearM[1]:''});
+  });
+
+  if(!films.length){
+    setStatus('Profil vide ou aucun film enregistré.','err');
+    btn.disabled=false;btn.textContent='Analyser';
+    return;
+  }
+
+  state.seenFilms=films;
+  state.lbxUser=user;
+  setStatus(`@${user} — ${films.length} films chargés`,'ok');
+  renderSeenFilms(films);
+  toast(`${films.length} films chargés !`);
   btn.disabled=false;btn.textContent='Analyser';
 }
 
-function renderSeenFilms(){
-  const el=document.getElementById('lbx-seen-list');
-  if(!state.seenFilms.length){el.innerHTML='';return;}
-  el.innerHTML='<div style="font-size:.75rem;color:var(--muted);margin-bottom:.5rem;text-align:center">Films détectés sur Letterboxd</div>'+
-    state.seenFilms.slice(0,12).map(f=>`<span class="lbx-chip">&#127916; ${f.title}${f.year?' ('+f.year+')':''}</span>`).join('')+
-    (state.seenFilms.length>12?`<span class="lbx-chip">+${state.seenFilms.length-12} autres</span>`:'');
+function renderSeenFilms(films){
+  const el=document.getElementById('lbx-seen');
+  el.innerHTML='<div style="font-size:.72rem;color:var(--muted);margin-bottom:.5rem">Films récents sur Letterboxd</div>'+
+    films.slice(0,10).map(f=>`<span class="lbx-tag">&#9654; ${f.title}${f.year?' ('+f.year+')':''}</span>`).join('')+
+    (films.length>10?`<span class="lbx-tag">+${films.length-10} autres</span>`:'');
 }
 
 async function getRecommendations(){
-  const btn=document.getElementById('reco-btn');
-  if(state.selectedGenres.length===0&&state.seenFilms.length===0){
-    toast('Choisis au moins un genre ou charge ton Letterboxd');return;
+  if(!state.selectedGenres.length&&!state.seenFilms.length){
+    toast('Choisis un genre ou charge ton Letterboxd');return;
   }
+  const btn=document.getElementById('reco-btn');
   btn.disabled=true;
   const area=document.getElementById('results-area');
-  area.innerHTML=`<div class="loader"><span class="loader-dot"></span><span class="loader-dot"></span><span class="loader-dot"></span><br><br>Analyse en cours...</div>`;
+  area.innerHTML=`<div class="loader">Sélection en cours...<div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>`;
 
-  const ratedFeedback=Object.entries(state.ratedFilms).map(([t,r])=>`${t}: ${r}/5`).join(', ');
+  const feedback=Object.entries(state.ratings).map(([t,r])=>`"${t}": ${r}/5`).join('; ');
+  const seenList=state.seenFilms.slice(0,25).map(f=>f.title).join(', ');
 
-  const prompt=`Tu es un programmeur cinéphile exigeant. Tu dois recommander des films RÉELS qui ont reçu d'excellentes critiques (note Rotten Tomatoes >80% ou équivalent). Ne recommande JAMAIS de films peu connus ou mal notés.
+  const prompt=`Tu es un cinéphile exigeant avec une vaste culture cinématographique. Recommande des films RÉELS qui existent vraiment et qui ont reçu d'excellentes critiques (>80% Rotten Tomatoes, Palme d'Or, Oscar, note Letterboxd >3.8/5, ou équivalent reconnu). Ne recommande JAMAIS de films obscurs ou mal notés.
 
-Profil utilisateur :
-- Films déjà vus sur Letterboxd (${state.seenFilms.length}) : ${state.seenFilms.slice(0,20).map(f=>f.title).join(', ')||'aucun'}
-- Genres demandés : ${state.selectedGenres.join(', ')||'tous genres'}
-- Notes données aux précédentes recommandations : ${ratedFeedback||'aucune encore'}
+Contexte utilisateur :
+- Films déjà vus (ne PAS recommander) : ${seenList||'aucun'}
+- Genres souhaités : ${state.selectedGenres.join(', ')||'variés'}
+- Retours sur les recommandations précédentes : ${feedback||'aucun encore'}
 
-Génère exactement 6 recommandations de films. Pour chaque film, réponds UNIQUEMENT en JSON valide, sans markdown, sans explication :
-{"films":[{"title":"...","year":"...","director":"...","genres":["..."],"why":"...","score":"..."}]}
+Génère exactement 6 recommandations. Réponds UNIQUEMENT en JSON valide, sans markdown ni explication :
+{"films":[{"title":"...","year":"...","director":"...","genres":["...","..."],"why":"...","score":"..."}]}
 
-"why" doit être une courte phrase (max 15 mots) expliquant pourquoi ce film correspond au profil.
-"score" = note critique courte ex: "96% RT" ou "Palme d'Or 1994"
-Ne propose JAMAIS un film déjà vu par l'utilisateur.`;
+Règles :
+- "title" = titre original ou français courant
+- "why" = phrase courte (12 mots max) justifiant la recommandation par rapport au profil
+- "score" = récompense ou note courte ex: "Palme d'Or", "96% RT", "4.2 LBX"
+- Varie les époques (1960-2024) et les pays
+- Si des notes de feedback existent, favorise les genres/styles des films bien notés`;
 
   try{
     const resp=await fetch('https://api.anthropic.com/v1/messages',{
@@ -267,104 +323,94 @@ Ne propose JAMAIS un film déjà vu par l'utilisateur.`;
     });
     const data=await resp.json();
     const text=data.content.map(i=>i.text||'').join('');
-    const clean=text.replace(/```json|```/g,'').trim();
+    const clean=text.replace(/```json\n?|```/g,'').trim();
     const parsed=JSON.parse(clean);
-    state.recommendedFilms=[...state.recommendedFilms,...parsed.films];
+    state.allReco=[...state.allReco,...(parsed.films||[])];
+    parsed.films.forEach(f=>{if(!state.queue.find(x=>x.title===f.title))state.queue.push(f);});
     renderResults(parsed.films);
   }catch(e){
-    area.innerHTML=`<div class="loader" style="color:#e24b4a">Erreur de connexion à l'API. Réessaie.</div>`;
+    area.innerHTML=`<div class="loader" style="color:#c07070">Erreur de connexion. Réessaie dans un instant.</div>`;
   }
   btn.disabled=false;
 }
 
+function cardColor(genres){
+  if(!genres)return'genre-default';
+  const g=genres.join(' ').toLowerCase();
+  if(g.includes('drame')||g.includes('drama'))return'genre-drame';
+  if(g.includes('science')||g.includes('sci-fi')||g.includes('sf'))return'genre-sf';
+  if(g.includes('thriller')||g.includes('horreur')||g.includes('horror'))return'genre-thriller';
+  return'genre-default';
+}
+
 function renderResults(films){
   const area=document.getElementById('results-area');
-  if(!films||!films.length){area.innerHTML='<div class="loader">Aucun résultat.</div>';return;}
   const label=state.selectedGenres.length?state.selectedGenres.join(' · '):'Sélection pour toi';
-  area.innerHTML=`<div class="section-title">${label}</div>
-  <div class="films-grid">${films.map(f=>`
-    <div class="film-card" onclick="openRating('${f.title.replace(/'/g,"\\'")}','${(f.director||'').replace(/'/g,"\\'")}')">
-      <div class="film-rating">${f.score||''}</div>
-      <div class="film-year">${f.year||''}</div>
-      <div class="film-title">${f.title}</div>
-      <div class="film-dir">${f.director||''}</div>
-      <div class="film-tags">${(f.genres||[]).map(g=>`<span class="film-tag">${g}</span>`).join('')}</div>
-      <div class="film-why">${f.why||''}</div>
-    </div>`).join('')}
+  area.innerHTML=`
+  <div class="section-title">${label}</div>
+  <div class="films-grid">
+    ${films.map(f=>`
+      <div class="film-card ${cardColor(f.genres)}">
+        <div class="film-score">${f.score||''}</div>
+        <div class="film-year">${f.year||''}</div>
+        <div class="film-title">${f.title}</div>
+        <div class="film-dir">${f.director||''}</div>
+        <div class="film-tags">${(f.genres||[]).map(g=>`<span class="film-tag">${g}</span>`).join('')}</div>
+        <div class="film-why">${f.why||''}</div>
+        <button class="film-rate-btn" onclick="addToQueue('${f.title.replace(/'/g,"\\'")}','${(f.director||'').replace(/'/g,"\\'")}')">+ Ajouter à mon profil</button>
+      </div>`).join('')}
   </div>
-  <div style="text-align:center;margin-top:.5rem">
-    <button class="btn-primary" onclick="getRecommendations()" style="background:transparent;color:var(--accent);border:1px solid #333;font-size:.82rem;padding:.6rem 1.4rem">Autres recommandations ↻</button>
+  <div style="text-align:center;margin-bottom:2rem">
+    <button class="btn-ghost" onclick="getRecommendations()">Autres recommandations ↻</button>
   </div>`;
 }
 
-function openRating(title,director){
-  state.pendingRating={title,director};
-  showPage({target:document.querySelectorAll('.tab')[1]},'profile');
-  document.querySelectorAll('.tab')[1].classList.add('active');
-  document.querySelectorAll('.tab')[0].classList.remove('active');
-  document.getElementById('page-home').classList.remove('active');
-  document.getElementById('page-profile').classList.add('active');
-  renderProfile();
-  setTimeout(()=>{
-    if(!state.ratedFilms[title]){
-      addToRatedList(title,director);
-    }
-    toast(`Note "${title}"`);
-  },100);
-}
-
-function addToRatedList(title,director){
-  if(!state.ratingQueue)state.ratingQueue=[];
-  if(!state.ratingQueue.find(x=>x.title===title))
-    state.ratingQueue.push({title,director});
-  renderProfile();
+function addToQueue(title,director){
+  if(!state.queue.find(x=>x.title===title))state.queue.push({title,director});
+  toast(`"${title}" ajouté à ton profil`);
 }
 
 function renderProfile(){
-  const rated=Object.entries(state.ratedFilms);
-  const queue=(state.ratingQueue||[]).filter(x=>!state.ratedFilms[x.title]);
-  const all=[...queue.map(x=>({...x,pending:true})),...rated.map(([t,r])=>({title:t,rating:r}))];
+  const lbxInitial=state.lbxUser?state.lbxUser[0].toUpperCase():'C';
+  document.getElementById('avatar-initials').textContent=lbxInitial;
+  if(state.lbxUser){
+    document.getElementById('profile-name').textContent='@'+state.lbxUser;
+    document.getElementById('profile-sub').textContent=`${state.seenFilms.length} films sur Letterboxd · Note tes recommandations`;
+  }
 
-  if(state.lbxUser) document.getElementById('profile-name').textContent='@'+state.lbxUser;
-
-  document.getElementById('stat-rated').textContent=rated.length;
+  const rated=Object.entries(state.ratings);
+  document.getElementById('s-rated').textContent=rated.length;
   if(rated.length){
     const avg=(rated.reduce((s,[,r])=>s+r,0)/rated.length).toFixed(1);
-    document.getElementById('stat-avg').textContent=avg;
+    document.getElementById('s-avg').textContent=avg;
   }
+  const gc={};
+  state.allReco.forEach(f=>{if(state.ratings[f.title]>=4)(f.genres||[]).forEach(g=>{gc[g]=(gc[g]||0)+1;});});
+  const top=Object.entries(gc).sort((a,b)=>b[1]-a[1])[0];
+  document.getElementById('s-genre').textContent=top?top[0]:'—';
 
-  const genreCount={};
-  state.recommendedFilms.forEach(f=>{
-    if(state.ratedFilms[f.title]>=4)(f.genres||[]).forEach(g=>{genreCount[g]=(genreCount[g]||0)+1;});
-  });
-  const topGenre=Object.entries(genreCount).sort((a,b)=>b[1]-a[1])[0];
-  document.getElementById('stat-genres').textContent=topGenre?topGenre[0]:'—';
-
+  const pending=state.queue.filter(x=>!state.ratings[x.title]);
+  const all=[...pending.map(x=>({...x,done:false})),...rated.map(([t,r])=>({title:t,rating:r,done:true}))];
   const list=document.getElementById('rated-list');
   if(!all.length){
-    list.innerHTML='<div class="empty-state">Aucun film noté pour l\'instant.<p>Les films recommandés apparaîtront ici pour que tu puisses les noter.</p></div>';
+    list.innerHTML='<div class="empty-state">Aucune recommandation pour l\'instant.<br>Lance une recherche depuis l\'onglet Découvrir.</div>';
     return;
   }
-
   list.innerHTML=all.map(item=>`
     <div class="rated-item">
       <div class="rated-title">${item.title}</div>
-      <div class="rated-dir">${item.director||''}</div>
-      <div class="stars">${[1,2,3,4,5].map(n=>`
-        <span class="star${(state.ratedFilms[item.title]||0)>=n?' lit':''}"
-          onclick="rate('${item.title.replace(/'/g,"\\'")}','${(item.director||'').replace(/'/g,"\\'")}',${n})">&#9733;</span>`).join('')}
+      <div class="rated-dir" style="font-size:.72rem;color:var(--muted)">${item.director||''}</div>
+      <div class="stars">
+        ${[1,2,3,4,5].map(n=>`<span class="star ${(state.ratings[item.title]||0)>=n?'lit':''}"
+          onclick="rate('${item.title.replace(/'/g,"\\'")}',${n})">★</span>`).join('')}
       </div>
     </div>`).join('');
 }
 
-function rate(title,director,n){
-  state.ratedFilms[title]=n;
-  if(!state.ratingQueue)state.ratingQueue=[];
-  if(!state.ratingQueue.find(x=>x.title===title))
-    state.ratingQueue.push({title,director});
+function rate(title,n){
+  state.ratings[title]=n;
   renderProfile();
-  toast(`${title} → ${n}/5 ⭐`);
-  document.getElementById('profile-meta').textContent='Tes notes améliorent les prochaines recommandations';
+  toast(`${n}/5 ⭐`);
 }
 
 init();
